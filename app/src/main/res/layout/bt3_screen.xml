@@ -9,6 +9,27 @@
         android:layout_margin="20dp"
         android:background="#FF0000FF"/>
 
+    <EditText
+        android:id="@+id/Edit_B_value"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:inputType="number"
+        android:hint="0~255"
+        android:textSize="15dp"
+        android:layout_below="@id/t_frame" />
+
+    <Button
+        android:id="@+id/apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apply"
+        android:layout_margin="20dp"
+        android:textSize="15dp"
+        android:layout_below="@+id/t_frame"
+        android:layout_toRightOf="@+id/Edit_B_value"
+        android:onClick="apply_b_clicked"/>
+
     <Button
         android:id="@+id/bt3_to_origin"
         android:layout_width="wrap_content"
@@ -19,15 +40,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:onClick="active3_back_clicked"/>
-
-    <TextView
-        android:id="@+id/bt3_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="40dp"
-        android:layout_margin="20dp"
-        android:layout_alignParentRight="true"
-        android:layout_above="@+id/bt3_to_origin"/>
 
 </RelativeLayout>

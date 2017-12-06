@@ -36,13 +36,12 @@
         android:textColor="#FF0000FF"
         android:onClick="bt3_clicked"/>
 
-    <TextView
-        android:id="@+id/t_box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:layout_marginTop="20dp"
-        android:text="NOTHING"
+    <View
+        android:id="@+id/box"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:background="#FF000000"
         android:layout_below="@+id/bt3"/>
 
     <TextView
@@ -52,7 +51,7 @@
         android:textSize="40dp"
         android:text=""
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/t_box"/>
+        android:layout_below="@+id/box"/>
 
     <EditText
         android:id="@+id/t_edit"
