@@ -15,6 +15,8 @@ import android.widget.Toast;
  */
 
 public class bt1_Activity extends Activity {
+    DBHandler controller;
+
     EditText editText;
 
     int R_value;
@@ -29,6 +31,8 @@ public class bt1_Activity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bt1_screen);
+
+        controller = new DBHandler(getApplicationContext());
 
         editText = (EditText)findViewById(R.id.Edit_R_value);
 
@@ -56,6 +60,9 @@ public class bt1_Activity extends Activity {
             Log.d("color","R_Num1 : " + R_value);
 
             setResult(Activity.RESULT_OK, returnIntent);
+
+            controller.update_R(111,R_value);
+
             super.onBackPressed();
         } else {
             Toast.makeText(this, "You should set valid 'R' value!", Toast.LENGTH_SHORT).show();

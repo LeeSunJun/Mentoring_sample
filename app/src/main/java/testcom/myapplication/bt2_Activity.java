@@ -15,6 +15,8 @@ import android.widget.Toast;
  */
 
 public class bt2_Activity extends Activity {
+    DBHandler controller;
+
     EditText editText;
 
     int R_value;
@@ -32,6 +34,7 @@ public class bt2_Activity extends Activity {
 
         editText = (EditText)findViewById(R.id.Edit_G_value);
 
+        controller = new DBHandler(getApplicationContext());
         Intent intent = getIntent();
 
         R_value = Integer.parseInt(intent.getStringExtra("RED"));
@@ -54,6 +57,8 @@ public class bt2_Activity extends Activity {
             returnIntent.putExtra("GREEN", Integer.toString(G_value));
 
             Log.d("color","G_Num1 : " + G_value);
+
+            controller.update_G(111,G_value);
 
             setResult(Activity.RESULT_OK, returnIntent);
             super.onBackPressed();

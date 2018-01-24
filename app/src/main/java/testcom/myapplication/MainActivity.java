@@ -2,6 +2,7 @@ package testcom.myapplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    DBHandler controller;
 
     final int RED = 1;
     final int GREEN = 2;
@@ -31,9 +33,20 @@ public class MainActivity extends AppCompatActivity {
 
         check_box =(View)findViewById(R.id.box);
 
+        controller = new DBHandler(getApplicationContext());
+
         R_value = 0;
         G_value = 0;
         B_value = 0;
+
+        if(controller.countData() == 0)
+            controller.insert_color(111,R_value,G_value,B_value);
+        else {
+            set_color(controller.select_id(111));
+        }
+
+        Log.d("DB","call select all");
+        controller.select_all();
     }
 
     @Override
@@ -112,5 +125,13 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("words",str);
 
         startActivity(intent);
+    }
+
+    public void set_color(Cursor c) {
+        R_value = c.getInt(c.getColumnIndex("red"));
+        G_value = c.getInt(c.getColumnIndex("green"));
+        B_value = c.getInt(c.getColumnIndex("blue"));
+
+        check_box.setBackgroundColor(Color.rgb(R_value,G_value,B_value));
     }
 }
